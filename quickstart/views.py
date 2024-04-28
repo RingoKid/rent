@@ -153,7 +153,10 @@ def monthly_report(request):
 
         # Execute the MONTHLY_REPORT_QUERY with LIMIT and OFFSET
         formatted_query = MONTHLY_REPORT_QUERY.format(year_month, report_request.month, report_request.year,
-                                                      report_request.page_size, offset)
+                                                      report_request.first_name or '', report_request.last_name or '',
+                                                      report_request.apartment_number or '', report_request.page_size,
+                                                      offset)
+
         cursor.execute(formatted_query)
         report = dictfetchall(cursor)
 

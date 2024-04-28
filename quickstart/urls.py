@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ApartmentViewSet, apartment_status_count, active_lease_rent_sum, current_month_year_transaction_sum, \
-    rent_and_transaction_summary, tenant_info, tenant_detail, LeaseViewSet, monthly_report
+    rent_and_transaction_summary, tenant_info, tenant_detail, LeaseViewSet, monthly_report, TransactionViewSet
 
 from quickstart.views import TenantViewSet
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path('tenants/<int:pk>/', TenantViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
     path('apartments/', ApartmentViewSet.as_view({'get': 'list', 'post': 'create'})),
     path('apartments/<int:pk>/', ApartmentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
+    path('transactions/', TransactionViewSet.as_view({'get': 'list', 'post': 'create'})),
     path('apartment-status-count/', apartment_status_count),
     path('active-lease-rent-sum/', active_lease_rent_sum),
     path('current-month-year-transaction-sum/', current_month_year_transaction_sum),

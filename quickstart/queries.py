@@ -54,6 +54,7 @@ MONTHLY_REPORT_QUERY = """
     INNER JOIN quickstart_lease l ON t.id = l.tenant_id
     INNER JOIN quickstart_apartment a ON l.apartment_id = a.id
     LEFT JOIN quickstart_transaction tr ON l.id = tr.lease_id AND tr.month = {} AND tr.year = {}
+    WHERE t.first_name LIKE '%{}%' AND t.last_name LIKE '%{}%' AND a.apartment_number LIKE '%{}%'
     ORDER BY a.apartment_number
     LIMIT {} OFFSET {};
 """
